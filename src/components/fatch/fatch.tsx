@@ -35,19 +35,19 @@ const ExcelDataFetcher = () => {
   };
 
   const handleNext = () => {
-    if (startIndex + 5 < data.length) {
-      setStartIndex(startIndex + 5);
+    if (startIndex + 100 < data.length) {
+      setStartIndex(startIndex + 100);
     }
   };
 
   const handleBack = () => {
-    if (startIndex - 5 >= 0) {
-      setStartIndex(startIndex - 5);
+    if (startIndex - 100 >= 0) {
+      setStartIndex(startIndex - 100);
     }
   };
 
   const handleCopy = () => {
-    const numbersToCopy = data.slice(startIndex, startIndex + 5).join("\n");
+    const numbersToCopy = data.slice(startIndex, startIndex + 100).join("\n");
     navigator.clipboard.writeText(numbersToCopy);
   };
 
@@ -66,6 +66,20 @@ const ExcelDataFetcher = () => {
         }}
       >
         Load Data
+      </button>
+      <button
+        onClick={handleCopy}
+        style={{
+          backgroundColor: "#28A745",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          padding: "5px 10px",
+          cursor: "pointer",
+          marginTop: "20px",
+        }}
+      >
+        Copy All
       </button>
 
       {loading && (
@@ -89,39 +103,6 @@ const ExcelDataFetcher = () => {
           }}
         />
       </div>
-
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {data.slice(startIndex, startIndex + 5).map((num, index) => (
-          <li
-            key={index}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "10px",
-              borderBottom: "1px solid #ccc",
-            }}
-          >
-            <span>{num}</span>
-          </li>
-        ))}
-      </ul>
-
-      <button
-        onClick={handleCopy}
-        style={{
-          backgroundColor: "#28A745",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          padding: "5px 10px",
-          cursor: "pointer",
-          marginTop: "20px",
-        }}
-      >
-        Copy All
-      </button>
-
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
         <button
           onClick={handleBack}
@@ -152,6 +133,27 @@ const ExcelDataFetcher = () => {
           Next
         </button>
       </div>
+      
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {data.slice(startIndex, startIndex + 100).map((num, index) => (
+          <li
+            key={index}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding: "10px",
+              borderBottom: "1px solid #ccc",
+            }}
+          >
+            <span>{num}</span>
+          </li>
+        ))}
+      </ul>
+
+
+      
+   
     </div>
   );
 };
