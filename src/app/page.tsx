@@ -20,7 +20,7 @@ export default function Home() {
         </button>
       </Link>
 
-      <ExcelDataFetcher />
+      <NumberGenerator/>
     </main>
   );
 }
