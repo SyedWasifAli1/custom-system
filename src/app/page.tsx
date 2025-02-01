@@ -1,4 +1,4 @@
-import ExcelDataFetcher from '@/components/fatch/fatch';
+import NumberGenerator from '@/components/fatch/fatch';
 import Link from 'next/link';
 
 export default function Home() {
